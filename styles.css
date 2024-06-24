@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Lekton:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('Images/azul.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, .2);
+    color: white;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+h1 {
+   font-size: 36px;
+   text-align: center; 
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;  
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px;
+}
+
+.input-box input::placeholder {
+   color: #ffff;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+ }
+
+ .select-box{  
+    position: relative;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;  
+    font-size: 16px;
+    color: #fff;
+    padding: 15px 43px 15px;
+    margin-bottom: 30px;
+    appearance: none;
+ }
+
+ select.select-box option {
+    background-color: black;
+    color: white; 
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.error-message {
+    color: red;
+    font-size: 16px;
+    position: absolute;
+    top: -20px; 
+    left: 0;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.divFooter {
+    position: fixed;
+    size: 20px;
+    top: 0;
+    right: 0;
+    padding: 10px;   
+}
+
+.divFooter a:visited {
+    color: inherit;
+}
