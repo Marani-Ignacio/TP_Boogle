@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head> 
+	<title>Boggle Game</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="game.css">
+	<link rel="stylesheet" href="normalize.css">
+</head>
+<body>
+	<div class="game">
+		<div id="time">00:00</div>
+		<div class= "board" id="board">
+			<div id="row0"></div>
+			<div id="row1"></div>
+			<div id="row2"></div>
+			<div id="row3"></div>
+		</div>
+		<div id="error"></div>
+		<p class="msg" id="currentWord"></p>
+		<p class="tableTitle" id="tableWords"> </p>
+					<div id="tableWords"></div>
+		<div id="scoreTable">
+			<div class="tableTotal"><span>Points: </span><span id="totalScore">0</span></div>
+		</div>
+		<button type='button' class='btn' id="submit">Confirm word</button>
+		<div class="btnDivide">
+			<button type='button' class='btnRestart' onclick="location.reload()">Restart</button>
+			<button type='button' class='finish' id="finish">Finish</button>	
+		</div>
+	</div>
+	<div id="myModal" class="modal">
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <p>Time is over</p>
+            <button id="modalBtn">OK</button>
+        </div>
+    </div>
+	<div id="wordExistsModal" class="modal">
+		<div class="modalContent">
+		  <span class="close">&times;</span>
+		  <p>This word has already been submitted.</p>
+		</div>
+	  </div>
+	<script type="text/javascript" src="game.js"></script>
+</body>
