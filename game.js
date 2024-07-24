@@ -177,3 +177,163 @@ function modifyClickable(clickable, currentTrack) {
         });
     });
 }
+
+function updateClickableDice() {
+    var events = document.getElementsByClassName('dice');
+    for (var i = 0; i < events.length; i++) {
+        var event = events[i];
+        var row = Number(event.getAttribute('row'));
+        var col = Number(event.getAttribute('col'));
+        var isClickable = currentTrack.length === 0 || clickable.some(function(dice) {
+            return dice[0] === row && dice[1] === col;
+        });
+
+        event.disabled = !isClickable;
+        if (isClickable) {
+            event.classList.add('highlightBtn');
+        } else {
+            event.classList.remove('highlightBtn');
+        }
+    }
+}
+
+function showWordExistsModal() {
+    var modal = document.getElementById("wordExistsModal");
+    var span = document.getElementsByClassName("close")[1];
+    
+    modal.style.display = "block";
+    
+    span.onclick = function() {
+        modal.style.display = "none";
+    };
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+}
+
+function validateAndSubmitWord() {
+    if (currentWord.length < 3) {
+        showError("The word must have at least 3 letters.");
+    } else if (submitted.has(currentWord)) {
+        showWordExistsModal();
+        resetWord();
+        afterSubmit();
+    } else {
+        fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + currentWord)
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Invalid word");
+                }
+            })
+            .then(function() {
+                var score = calculateScore(currentWord);
+                words.push({ word: currentWord, points: score });
+                submitWord();
+                updateWords();
+                clearSelectedButtons();
+                afterSubmit();
+            })
+            .catch(function() {
+                showError("The word is not valid. Points will be deducted.");
+                var score = -calculateScore(currentWord);
+                words.push({ word: currentWord, points: score });
+                updateWords();
+                resetWord();
+                clearSelectedButtons();
+                afterSubmit();
+            });
+    }
+}
+
+function resetWord() {
+    currentWord = "";
+    document.getElementById('currentWord').innerHTML = currentWord;
+}
+
+function clearSelectedButtons() {
+    var selectedButtons = document.getElementsByClassName('selected');
+    var activeButtons = document.getElementsByClassName('active');
+    
+    for (var i = 0; i < selectedButtons.length; i++) {
+        selectedButtons[i].classList.remove('selected');
+    }
+    for (var i = 0; i < activeButtons.length; i++) {
+        activeButtons[i].classList.remove('active');
+    }
+    
+    lastSelectedButton = null;
+}
+
+function submitWord() {
+    currentTrack = [];
+    submitted.add(currentWord);
+    resetWord();
+}
+
+function afterSubmit() {
+    var events = document.getElementsByClassName('dice');
+    for (var i = 0; i < events.length; i++) {
+        events[i].classList.remove('active');
+    }
+    currentTrack = [];
+    updateClickableDice();
+}
+
+function updateWords() {
+    var validWords = words.filter(function(entry) {
+        return entry.points > 0;
+    });
+    var wordsHtml = validWords.map(function(entry) {
+        return entry.word + " (" + entry.points + ")";
+    }).join(' - ');
+    var sum = words.reduce(function(total, entry) {
+        return total + entry.points;
+    }, 0);
+    
+    document.getElementById('tableWords').innerHTML = wordsHtml;
+    document.getElementById('totalScore').innerHTML = sum;
+}
+
+function calculateScore(word) {
+    var length = word.length;
+    if (length <= 2) return 0;
+    if (length <= 4) return 1;
+    if (length === 5) return 2;
+    if (length === 6) return 3;
+    if (length === 7) return 5;
+    return 11;
+}
+
+function withinRange(row, col) {
+    return (row >= 0 && row < 4 && col >= 0 && col < 4);
+}
+
+var ajacentDice = [
+    [-1, -1], [-1, 0], [-1, 1],
+    [0, -1],          [0, 1],
+    [1, -1], [1, 0], [1, 1]
+];
+
+function ajacent(row, col) {
+    clickable = ajacentDice
+        .map(function(dice) {
+            return [Number(row) + dice[0], Number(col) + dice[1]];
+        })
+        .filter(function(dice) {
+            return withinRange(dice[0], dice[1]);
+        });
+}
+
+function showError(message) {
+    var errorElement = document.getElementById('error');
+    errorElement.innerHTML = message;
+    errorElement.style.display = 'block';
+    setTimeout(function() {
+        errorElement.style.display = 'none';
+    }, 3000);
+}
