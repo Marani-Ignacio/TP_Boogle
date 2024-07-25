@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Lekton:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('Images/azul.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.game {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 40px rgba(255, 255, 255, .2);
+    color: white;
+    border-radius: 10px;
+    padding: 30px; 
+    width: 320px; /* Establece un ancho fijo para el contenedor del juego */
+    margin: 0 auto; /* Centra el contenedor */
+}
+
+#tableWords {
+    max-width: 100%; /* Asegura que el contenedor no exceda el ancho del .game */
+    word-wrap: break-word; /* Permite el ajuste de línea */
+    overflow-wrap: break-word; /* Alternativa para el ajuste de línea */
+    white-space: normal; /* Permite el ajuste de línea */
+}
+
+
+.dice {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    border: 1px solid lightgrey;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    margin: 6px;
+    background-color: whitesmoke;
+    width: 50px;
+    height: 50px;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin: 5px;
+}
+
+.btnDivide {
+    display: flex; 
+}
+
+.btnRestart {  
+    margin: 0 10px;
+    width: 100%;
+    height: 45px;
+    background: #77ac5e;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin: 5px;
+}
+
+.finish {
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin: 5px;
+}
+
+.dice:hover {
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+.msg {
+    padding: 10px;
+    font-size: 5px;
+    text-align: center; 
+    max-width: 100%; /* Agregar ancho máximo */
+    white-space: normal; /* Permitir ajuste de línea */
+}
+
+#error {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    z-index: 1000;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animación de entrada */
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animación de salida */
+@keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px; 
+}
+
+.modalContent {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 300px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.selected {
+    border: 3px solid red; /* Cambia esto por el estilo que prefieras */
+}
