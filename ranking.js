@@ -20,4 +20,26 @@ document.addEventListener('DOMContentLoaded', function() {
         rankingTableBody.innerHTML = tableContent;
     }
 
+    function sortRanking(sortFunction) {
+        var rankingData = loadRankingData();
+        rankingData.sort(sortFunction);
+        renderRanking(rankingData);
+    }
 
+    sortScoreButton.onclick = function() {
+        sortRanking(function(a, b) {
+            return b.point - a.point;
+        });
+    };
+
+    sortDateButton.onclick = function() {
+        sortRanking(function(a, b) {
+            return new Date(b.date) - new Date(a.date);
+        });
+    };
+
+    // Initial render
+    sortRanking(function(a, b) {
+        return b.point - a.point;
+    });
+});
