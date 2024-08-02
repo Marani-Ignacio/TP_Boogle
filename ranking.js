@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
-    // Initial render
     sortRanking(function(a, b) {
         return b.point - a.point;
     });
