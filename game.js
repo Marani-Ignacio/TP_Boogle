@@ -212,6 +212,11 @@ function showWordExistsModal() {
             modal.style.display = "none";
         }
     };
+
+    // Clear the word and unmark selected buttons
+    resetWord();
+    clearSelectedButtons();
+    afterSubmit();
 }
 
 function validateAndSubmitWord() {
@@ -219,8 +224,6 @@ function validateAndSubmitWord() {
         showError("The word must have at least 3 letters.");
     } else if (submitted.has(currentWord)) {
         showWordExistsModal();
-        resetWord();
-        afterSubmit();
     } else {
         fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + currentWord)
             .then(function(response) {
@@ -259,11 +262,11 @@ function clearSelectedButtons() {
     var selectedButtons = document.getElementsByClassName('selected');
     var activeButtons = document.getElementsByClassName('active');
     
-    for (var i = 0; i < selectedButtons.length; i++) {
-        selectedButtons[i].classList.remove('selected');
+    while (selectedButtons.length > 0) {
+        selectedButtons[0].classList.remove('selected');
     }
-    for (var i = 0; i < activeButtons.length; i++) {
-        activeButtons[i].classList.remove('active');
+    while (activeButtons.length > 0) {
+        activeButtons[0].classList.remove('active');
     }
     
     lastSelectedButton = null;
