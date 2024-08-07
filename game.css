@@ -26,15 +26,16 @@ body {
     color: white;
     border-radius: 10px;
     padding: 30px; 
-    width: 320px; /* Establece un ancho fijo para el contenedor del juego */
-    margin: 0 auto; /* Centra el contenedor */
+    width: 320px; 
+    margin: 0 auto; 
 }
 
+
 #tableWords {
-    max-width: 100%; /* Asegura que el contenedor no exceda el ancho del .game */
-    word-wrap: break-word; /* Permite el ajuste de línea */
-    overflow-wrap: break-word; /* Alternativa para el ajuste de línea */
-    white-space: normal; /* Permite el ajuste de línea */
+    max-width: 100%; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    white-space: normal; 
 }
 
 
@@ -111,10 +112,10 @@ body {
 
 .msg {
     padding: 10px;
-    font-size: 5px;
+    font-size: 15px;
     text-align: center; 
-    max-width: 100%; /* Agregar ancho máximo */
-    white-space: normal; /* Permitir ajuste de línea */
+    max-width: 100%; 
+    white-space: normal; 
 }
 
 #error {
@@ -133,13 +134,11 @@ body {
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-/* Animación de entrada */
 @keyframes fadein {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-/* Animación de salida */
 @keyframes fadeout {
     from { opacity: 1; }
     to { opacity: 0; }
@@ -185,5 +184,5 @@ body {
 }
 
 .selected {
-    border: 3px solid red; /* Cambia esto por el estilo que prefieras */
+    border: 3px solid red; 
 }
