@@ -38,10 +38,10 @@ h1 {
     width: 100%;
     height: 50px;
     background: transparent;
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
-.inputBox input {
+.inputBox input, .inputBox textarea {
     width: 100%;
     height: 100%;
     background: transparent;
@@ -54,8 +54,13 @@ h1 {
     padding: 20px 45px 20px;
 }
 
-.inputBox input::placeholder {
-   color: #ffff;
+.inputBox textarea {
+    height: 100px;
+    resize: none;
+}
+
+.inputBox input::placeholder, .inputBox textarea::placeholder {
+   color: #fff;
 }
 
 .input-box i {
@@ -64,26 +69,6 @@ h1 {
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
- }
-
- .selectBox{  
-    position: relative;
-    width: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;  
-    font-size: 16px;
-    color: #fff;
-    padding: 15px 43px 15px;
-    margin-bottom: 30px;
-    appearance: none;
- }
-
- select.selectBox option {
-    background-color: black;
-    color: white; 
 }
 
 .btn {
@@ -98,9 +83,33 @@ h1 {
     font-size: 16px;
     color: #333;
     font-weight: 600;
+    margin-top: 40px;
 }
 
 .btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.back-button {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+    display: inline-block;
+    line-height: 45px;
+}
+
+.back-button:hover {
     background-color: #0056b3;
     color: white;
 }
@@ -116,28 +125,7 @@ h1 {
     display: none;
 }
 
-.divFooter {
-    position: fixed;
-    size: 20px;
-    top: 0;
-    right: 0;
-    padding: 10px;   
-}
-
-.divFooter a:visited {
-    color: inherit;
-}
-
-
-.github-button, .contact-button {
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-}
-
-
-.github-button:hover, .contact-button:hover {
-    opacity: 0.8;
+.foot {
+    font-size: 10px;
+    margin-top: 10px;
 }
