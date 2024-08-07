@@ -213,7 +213,6 @@ function showWordExistsModal() {
         }
     };
 
-    // Clear the word and unmark selected buttons
     resetWord();
     clearSelectedButtons();
     afterSubmit();
