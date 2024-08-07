@@ -40,6 +40,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     
     // Clear form fields after successful submission
     clearForm();
+    
 });
 
 function clearForm() {
