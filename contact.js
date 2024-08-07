@@ -9,7 +9,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     var namePattern = /^[a-zA-Z0-9]+$/;
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    // Reset error message
     errorMessage.style.display = "none";
     
     if (!namePattern.test(name)) {
@@ -30,7 +29,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         return;
     }
     
-    // If all validations pass, open Gmail compose window
     var gmailComposeUrl = "https://mail.google.com/mail/?view=cm&fs=1" +
                           "&to=" + encodeURIComponent(email) +
                           "&su=" + encodeURIComponent("Te invito a jugar Boogle " + name + "!") +
@@ -38,7 +36,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     
     window.open(gmailComposeUrl, '_blank');
     
-    // Clear form fields after successful submission
     clearForm();
     
 });
